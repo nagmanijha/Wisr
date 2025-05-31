@@ -5,7 +5,7 @@ const Page = () => {
     <div >
 <h1> Page Title</h1>  
 <Button>
-Lets get started
+Lets get
 </Button>
     </div>
   )
