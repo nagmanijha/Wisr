@@ -20,13 +20,14 @@ Welcome to **Wisr**, an intuitive and interactive SaaS application designed to h
 
 ## 📖 Getting Started
 
-Follow these steps to set up the project on your local machine:
 
-### 1️⃣ Clone the Repository
+### **🚀 Setting Up Wisr on Your Local Machine**
+Follow these steps to get started:
 
+1️⃣ **Clone the Repository**  
 ```bash
-git clone https://github.com/your-repo/learning-companion.git
-cd learning-companion
+git clone https://github.com/nagmanijha/Wisr.git
+cd Wisr
 ```
 
 ### 2️⃣ Install Dependencies
