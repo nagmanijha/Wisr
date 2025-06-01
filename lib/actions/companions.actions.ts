@@ -9,7 +9,7 @@ export const createCompanion = async (formData: CreateCompanion) => {
     const supabase = createSupabaseClient();
 
     const { data, error } = await supabase
-        .from('companions')
+        .from('Companions')
         .insert({...formData, author })
         .select();
 
@@ -21,7 +21,7 @@ export const createCompanion = async (formData: CreateCompanion) => {
 export const getAllCompanions = async ({ limit = 10, page = 1, subject, topic }: GetAllCompanions) => {
     const supabase = createSupabaseClient();
 
-    let query = supabase.from('companions').select();
+    let query = supabase.from('Companions').select();
 
     if(subject && topic) {
         query = query.ilike('subject', `%${subject}%`)
@@ -36,7 +36,11 @@ export const getAllCompanions = async ({ limit = 10, page = 1, subject, topic }:
 
     const { data: companions, error } = await query;
 
-    if(error) throw new Error(error.message);
+    if(error) {
+    console.log("Supabase error:", error);
+    throw new Error(error.message);
+}
+
 
     return companions;
 }
@@ -45,7 +49,7 @@ export const getCompanion = async (id: string) => {
     const supabase = createSupabaseClient();
 
     const { data, error } = await supabase
-        .from('companions')
+        .from('Companions')
         .select()
         .eq('id', id);
 
@@ -122,7 +126,7 @@ export const newCompanionPermissions = async () => {
     }
 
     const { data, error } = await supabase
-        .from('companions')
+        .from('Companions')
         .select('id', { count: 'exact' })
         .eq('author', userId)
 
