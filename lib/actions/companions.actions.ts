@@ -38,7 +38,8 @@ export const getAllCompanions = async ({ limit = 10, page = 1, subject, topic }:
 
     if(error) {
     console.log("Supabase error:", error);
-    throw new Error(error.message);
+  throw new Error(error?.message || 'Unknown Supabase fetch error');
+
 }
 
 
@@ -180,7 +181,7 @@ export const getBookmarkedCompanions = async (userId: string) => {
   const supabase = createSupabaseClient();
   const { data, error } = await supabase
     .from("bookmarks")
-    .select(`Companions:companion_id (*)`) // Notice the (*) to get all the companion data
+    .select(`"Companions":companion_id (*)`) // Notice the (*) to get all the companion data
     .eq("user_id", userId);
   if (error) {
     throw new Error(error.message);
